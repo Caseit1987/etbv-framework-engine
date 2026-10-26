@@ -1,0 +1,24 @@
+{
+  "$schema": "https://etbv.dev",
+  "framework": {
+    "name": "Eternal Trust Boundary Validation",
+    "version": "1.0.0",
+    "layer": 0,
+    "mode": "deterministic"
+  },
+  "boundaries": {
+    "input_sanitization": {
+      "enforce_strict_types": true,
+      "drop_on_anomaly": true,
+      "max_overhead_ms": 0.05
+    },
+    "state_transitions": {
+      "allowed_mutations": ["S_INIT", "S_READ", "S_WRITE_BOUNDED"],
+      "action_on_violation": "STRUCTURAL_TERMINATION"
+    },
+    "agent_memory_isolation": {
+      "vector_poisoning_protection": "active",
+      "immutable_base_layer": true
+    }
+  }
+}
